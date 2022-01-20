@@ -1,0 +1,83 @@
+<%- include('layouts/header'); -%>
+<body>
+  <%- include('layouts/nav'); -%>
+    <form name="myform" method="Post" onsubmit="return formSubmit();"  action="" >
+      <label>Name</label>
+      <input id="name" placeholder="First Last" type="text" name="name"><br/>
+
+      <label>Phone</label>
+      <input id="phone" placeholder="123-123-1234" type="phone" name="phone"><br/>
+
+      <label>Strawberry Juice</label>
+      <input type="text" id="strawberryJuices" placeholder="Enter quantity" name="strawberryJuices"><br/>
+
+      <label>Watermelon Juice</label>
+      <input type="text" id="watermelonJuices" placeholder="Enter quantity" name="watermelonJuices"><br/>
+
+      <label>Orange Juice</label>
+      <input type="text" id="orangeJuices" placeholder="Enter quantity" name="orangeJuices"><br/>
+
+      <br/><br/>
+
+      <input type="submit" value="Submit">
+      <p id="errors"></p>
+    </form>  
+</section>
+
+  <div class="formData">
+    <%
+      if(typeof(errors) != 'undefined'){
+        for(var error of errors){
+        %>
+          <p class="errors"><%= error.msg %></p>
+        <%
+        }
+      }
+    %>
+    <%
+      if(typeof(total) != 'undefined'){
+        %>
+        <p id="formResult">Your Receipt:</p>
+        <table>
+          <tr>
+            <th>Name: </th>
+            <td><%= name %></td>
+          </tr>
+          <tr>
+            <th>Phone: </th>
+            <td><%= phone %></td>
+          </tr>
+          <tr>
+            <th>Item Description: </th>
+            <td><%- items.join(",<br> ") %></td> <!--items from the array, seperated by a break-->
+          </tr>
+          <tr>
+            <th>Subtotal: </th>
+            <td>$<%= subTotal.toFixed(2) %></td>
+          </tr>
+          <tr>
+            <th>Tax: </th>
+            <td>$<%= tax.toFixed(2) %></td>
+          </tr>
+          <tr>
+            <th>Total: </th>
+            <td>$<%= total.toFixed(2) %></td>
+          </tr>
+        </table>
+        <%
+      }
+    %>
+    
+  </div>
+</section>
+<div class="clear"></div>
+</body>
+<%- include('layouts/footer'); -%>
+
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+<%- include('layouts/header'); -%>
+<body>
+    <%- include('layouts/nav'); -%>
+    <a href="/logout">Logout</a>
+    <section>
+       <table>
+           <thead>
+               <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Mango Juices</th>
+                    <th>Berry Juices</th>
+                    <th>Apple Juices</th>
+                    <th>Sub Total</th>
+                    <th>Tax</th>
+                    <th>Total</th>    
+                    <th>Delete</th>           
+                </tr>
+           </thead>
+           <tbody>
+                <%
+                    for(var order of orders){
+                        %>
+                            <tr>
+                                <td><%= order.name %></td>
+                                <td><%= order.phone %></td> 
+                                <td><%= order.strawberryJuices %></td>
+                                <td><%= order.watermelonJuices %></td>
+                                <td><%= order.orangeJuices %></td>
+                                <td>$<%= order.subTotal.toFixed(2) %></td>
+                                <td>$<%= order.tax.toFixed(2) %></td>
+                                <td>$<%= order.total.toFixed(2) %></td>
+                                <td><a href="/delete/<%= order._id %>">Delete</a></td>
+                           </tr>
+                        <%
+                    }
+                %>
+           </tbody>
+       </table>
+    </section>
+</body>
+<%- include('layouts/footer'); -%>
+
+
+
+
+
+
+
+
